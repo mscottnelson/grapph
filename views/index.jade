@@ -1,0 +1,7 @@
+extends ./layout.jade
+
+block body
+  if user
+    | Hello #{user.username}!
+  else
+    | Hello world!

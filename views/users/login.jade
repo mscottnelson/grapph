@@ -1,0 +1,10 @@
+extends ../layout.jade
+
+block body
+  form(method="POST" action="/users/login")
+    .form-group
+      label(for="username") Username
+      input.form-control(type="text" name="username")
+      label(for="password") Password
+      input.form-control(type="password" name="password")
+      button.btn.btn-default(type="submit") Login!

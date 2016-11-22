@@ -1,0 +1,33 @@
+html
+  head
+    include ./includes/bootstrap.jade
+    include ./includes/googleMapsApi.jade
+    script(src="/jspm_packages/system.js")
+    script(src="/config.js")
+    script System.import('app-angular');
+    style
+      | body { padding-top: 70px; }
+    block title
+      title Hello world!
+
+  body
+    nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          a.navbar-brand(href="#") grapph
+        .collapse.navbar-collapse.navbar-right
+          if !isAuthenticated()
+            ul.nav.navbar-nav
+              li.nav.navbar-nav
+                a(href='/users/login') Sign In
+              li.nav.navbar-nav
+                a(href='/users/register') Register
+          else
+            ul.nav.navbar-nav.navbar-right
+              li.nav.navbar-nav
+                a(href='/users/logout') Logout
+            p.navbar-text.navbar-right
+              | Hello #{user.username}!
+    .container
+      .well
+        block body

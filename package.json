@@ -1,0 +1,74 @@
+{
+  "name": "Grapph",
+  "version": "1.0.0",
+  "description": "Minimalistic app for tracking changes over time",
+  "main": "lib/server.js",
+  "scripts": {
+    "test": "npm run karma && npm run mocha",
+    "start": "nodemon ./lib/server.js",
+    "dev": "NODE_ENV=development nodemon ./lib/server.js",
+    "dev_db_create": "createdb grapph_seed_development && sequelize db:migrate",
+    "dev_db_connect": "psql grapph_development",
+    "test_db_create": "createdb graphh_test",
+    "sequelize": "sequelize",
+    "postinstall": "jspm install",
+    "karma": "karma start",
+    "mocha": "istanbul cover -x '**/models/index.js' _mocha -- -R spec test/server/*-test.js",
+    "webdriver": "webdriver-manager update && webdriver-manager start",
+    "test-server": "NODE_ENV=test PORT=8008 nodemon ./lib/server.js",
+    "protractor-backend": "npm run webdriver & npm run test-server",
+    "protractor": "protractor ./protractor.config.js"
+  },
+  "keywords": [
+    "grapph",
+    "tracking"
+  ],
+  "author": "Michael Scott-Nelson",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.1.1",
+    "eslint-plugin-angular": "^1.3.1",
+    "express-debug": "^1.1.1",
+    "jspm": "^0.16.39",
+    "karma": "^0.13.0",
+    "karma-chai": "^0.1.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jspm": "^2.2.0",
+    "karma-mocha": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "0.0.26",
+    "mocha": "^2.5.3",
+    "morgan": "^1.7.0",
+    "supertest": "^1.2.0",
+    "supertest-as-promised": "^3.2.0"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "connect-redis": "^3.1.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "jade": "^1.11.0",
+    "lodash": "^4.13.1",
+    "nodemon": "^1.9.2",
+    "pg": "^6.0.3",
+    "sequelize": "^3.23.6",
+    "sequelize-cli": "^2.4.0"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public"
+    },
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.5.8",
+      "angular-route": "github:angular/bower-angular-route@^1.5.8",
+      "lodash": "npm:lodash@^4.13.1"
+    },
+    "devDependencies": {
+      "angular-mocks": "github:angular/bower-angular-mocks@^1.5.8"
+    }
+  }
+}
