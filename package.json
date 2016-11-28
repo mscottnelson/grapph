@@ -7,7 +7,7 @@
     "test": "npm run karma && npm run mocha",
     "start": "nodemon ./lib/server.js",
     "dev": "NODE_ENV=development nodemon ./lib/server.js",
-    "dev_db_create": "createdb grapph_seed_development && sequelize db:migrate",
+    "dev_db_create": "createdb grapph_development && sequelize db:migrate",
     "dev_db_connect": "psql grapph_development",
     "test_db_create": "createdb graphh_test",
     "sequelize": "sequelize",
