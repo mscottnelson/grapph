@@ -1,6 +1,6 @@
 {
   "name": "Grapph",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Minimalistic app for tracking changes over time",
   "main": "lib/server.js",
   "scripts": {
