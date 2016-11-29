@@ -4,8 +4,8 @@ html
     include ./includes/googleMapsApi.jade
     script(src="/jspm_packages/system.js")
     script(src="/config.js")
-    script System.import('d3');
-    script System.import('app-angular');
+    script System.import('app-angular')
+    script System.import("/visualization/wGraph.js")
     style
       | body { padding-top: 70px; }
     block title
@@ -32,3 +32,11 @@ html
     .container
       .well
         block body
+
+    style.
+      #chart svg {
+      height: 400px;
+      width: 100%;
+      }
+    #chart
+      svg

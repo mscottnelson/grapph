@@ -67,8 +67,9 @@
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.5.8",
       "angular-route": "github:angular/bower-angular-route@^1.5.8",
-      "d3": "npm:d3@^4.4.0",
-      "lodash": "npm:lodash@^4.13.1"
+      "d3": "npm:d3@3.5.17",
+      "lodash": "npm:lodash@^4.13.1",
+      "nvd3": "npm:nvd3@^1.8.4"
     },
     "devDependencies": {
       "angular-mocks": "github:angular/bower-angular-mocks@^1.5.8"
