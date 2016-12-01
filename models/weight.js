@@ -6,7 +6,6 @@ module.exports = function(sequelize, DataTypes) {
   var Weight = sequelize.define('Weight', {
     username: {
       type: DataTypes.STRING,
-      unique: true
     },
     weight: {
       type: DataTypes.FLOAT,
@@ -24,9 +23,6 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         Weight.belongsTo(models.User);
       }
-    },
-    validate: {
-
     }
   });
   return Weight;

@@ -10,14 +10,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       username: {
-        type: Sequelize.STRING,
-        unique: true
+        type: Sequelize.STRING
       },
       weight: {
         type: Sequelize.FLOAT
       },
       createdAt: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
         type: Sequelize.DATE
       }
     });
