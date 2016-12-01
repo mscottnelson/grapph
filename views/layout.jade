@@ -29,15 +29,16 @@ html
                 a(href='/users/logout') Logout
             p.navbar-text.navbar-right
               | Hello #{user.username}!
-    style.
-      #chart svg {
-      height: 400px;
-      width: 100%;
-      }
-    #chart
-      svg
-    input(ng-model="addWeight" type="text")
-    button(ng-click="") ADD
-    .container
-      .well
-        block body
+    div(ng-controller="WeightListController as vm")
+      style.
+        #chart svg {
+        height: 400px;
+        width: 100%;
+        }
+      #chart
+        svg
+      input(ng-model="newWeight" type="text")
+      button(ng-click="vm.addWeight(newWeight)") ADD
+      .container
+        .well
+          block body

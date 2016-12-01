@@ -1,4 +1,3 @@
-
 var angular = require('angular');
 
 angular.module('grapph.registration', [])
@@ -10,8 +9,8 @@ angular.module('grapph.registration', [])
         ctrl.$asyncValidators.uniqueUsername = function(modelValue) {
           // /users/isAvailable { isAvailable: true/false }
           return $http.post('/users/available', { username: modelValue })
-            .then(function(response) {
-              if (!response.data.isAvailable) {
+            .then(function(res) {
+              if (!res.data.isAvailable) {
                 return $q.reject('Not available');
               } else {
                 return true;
