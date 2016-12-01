@@ -1,6 +1,7 @@
 # Simple App for Grapphing Changes over Time
 
 Use instructions:
+
 1. Install PostgreSQL for your OS
 https://www.postgresql.org/download/
 

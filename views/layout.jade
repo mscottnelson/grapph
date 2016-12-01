@@ -29,10 +29,6 @@ html
                 a(href='/users/logout') Logout
             p.navbar-text.navbar-right
               | Hello #{user.username}!
-    .container
-      .well
-        block body
-
     style.
       #chart svg {
       height: 400px;
@@ -40,3 +36,8 @@ html
       }
     #chart
       svg
+    input(ng-model="addWeight" type="text")
+    button(ng-click="") ADD
+    .container
+      .well
+        block body
