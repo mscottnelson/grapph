@@ -8,6 +8,7 @@ angular.module('grapph.weight', [])
     return $http.get('/weights/list')
     .then(function(res) {
       weightList = res.data;
+      console.log("**********weightList: " + JSON.stringify(weightList));
     })
     .catch(function(err) {
       console.log("Error: " + err);
