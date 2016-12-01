@@ -11,6 +11,9 @@ html
     block title
       title Hello world!
 
+    .container
+      .well
+        block body
   body
     nav.navbar.navbar-default.navbar-fixed-top
       .container
@@ -33,12 +36,21 @@ html
       style.
         #chart svg {
         height: 400px;
-        width: 100%;
         }
       #chart
         svg
       input(ng-model="newWeight" type="text")
       button(ng-click="vm.addWeight(newWeight)") ADD
-      .container
-        .well
-          block body
+      hr
+      label Basic Weight List for #{user.username}:
+      ul
+        li(ng-repeat="weight in vm.weightList | filter: { } track by $index")
+          | {{ weight.weight }} - {{ weight.createdAt | date:'shortDate' }}
+
+  block footer
+        if user
+          .row
+            .col-md-12
+              .pull-right
+                small You are signed in as #{user.username}!
+                a(href="/users/logout")  Logout.
