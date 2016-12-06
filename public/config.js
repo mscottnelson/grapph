@@ -13,6 +13,7 @@ System.config({
     "angular-route": "github:angular/bower-angular-route@1.5.8",
     "d3": "npm:d3@3.5.3",
     "lodash": "npm:lodash@4.13.1",
+    "moment": "npm:moment@2.17.1",
     "nvd3": "npm:nvd3@1.8.4",
     "github:angular/bower-angular-mocks@1.5.8": {
       "angular": "github:angular/bower-angular@1.5.8"

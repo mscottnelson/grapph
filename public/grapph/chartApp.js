@@ -1,63 +1,26 @@
 var angular = require('angular');
+var moment = require('moment');
 
-angular.module('grapph.chartApp', [])
-.service('WeightChartService', function($http) {
-  var weightList = [{"username":"foo", "weight":250, "createdAt":"2016-12-01T01:38:54.223Z"},{"username":"foo", "weight":253, "createdAt":"2016-12-01T01:38:57.501Z"},{"username":"foo", "weight":257, "createdAt":"2016-12-02T01:38:54.223Z"}]
-
-  this.retrieveWeightList = function() {
-    return $http.get('/weights/list')
-    .then(function(res) {
-      weightList = res.data;
-    })
-    .catch(function(err) {
-      console.log("Error: " + err);
-    });
-  };
-
-  this.getWeightList = function() {
-    return weightList;
-  };
-
-  this.addWeight = function(toAdd) {
-    $http.post('/weights/new', { weight: toAdd })
-    .then(function(res) {
-      weightList = res.data;
-    })
-    .catch(function(err) {
-      console.log("Error: " + err);
-    });
-  };
-
-  this.deleteWeight = function(item) {
-    $http.post('/weights/delete', item)
-    .then(function(res){
-      weightList = res.data;
-    })
-    .catch(function(err) {
-      console.log("Error: " + err);
-    });
-  };
-
-})
-.controller('WeightChartController', function(WeightChartService, $scope) {
+angular.module('grapph.chartApp', ['grapph.weight'])
+.controller('WeightChartController', function(WeightListService, $scope) {
   var vm = this;
 
-  WeightChartService.getWeightList();
+  WeightListService.getWeightList();
 
   vm.getWeightList = function() {
-    return WeightChartService.getWeightList();
+    return WeightListService.getWeightList();
   };
 
   vm.addWeight = function(toAdd) {
-    WeightChartService.addWeight(toAdd);
+    WeightListService.addWeight(toAdd);
   };
 
   vm.deleteWeight = function(item) {
-    WeightChartService.deleteWeight(item);
+    WeightListService.deleteWeight(item);
   };
 
   $scope.$watch(function() {
-    return WeightChartService.getWeightList();
+    return WeightListService.getWeightList();
   }, function(newVal, oldVal) {
     vm.weightList = newVal;
   });
@@ -79,7 +42,9 @@ angular.module('grapph.chartApp', [])
       var rawSvg=elem.find('svg');
       var svg = d3.select(rawSvg[0]);
 
-      scope.$watch(weightChartController.getWeightList(), function(newVal, oldVal){
+      scope.$watch(function() {
+        return weightChartController.getWeightList();
+      }, function(newVal, oldVal){
         weightDataToPlot = newVal;
         redrawLineChart();
       });
@@ -87,15 +52,23 @@ angular.module('grapph.chartApp', [])
       function setChartParameters(){
         var weightDataToPlot = weightChartController.getWeightList();
 
-        console.log("weightA:" + JSON.stringify(Date.parse(weightDataToPlot[0].createdAt)));
-        console.log("weightB:" + weightDataToPlot[0].username + Date.parse(weightDataToPlot[0].createdAt));
+        var timeFormat = d3.time.format("%x");
 
-        xScale = d3.scale.linear()
-        .domain([Date.parse(weightDataToPlot[0].createdAt), Date.parse(weightDataToPlot[weightDataToPlot.length-1].createdAt)])
+        console.log("Date as given: ", weightDataToPlot[0].createdAt);
+        console.log("Date as given: ", new Date(weightDataToPlot[0].createdAt));
+
+        xScale = d3.time.scale()
+        .domain([new Date(weightDataToPlot[0].createdAt), new Date(weightDataToPlot[weightDataToPlot.length-1].createdAt)])
         .range([padding + 5, rawSvg.attr("width") - padding]);
 
+        // xScale = d3.scale.linear()
+        // .domain([Date.parse(weightDataToPlot[0].createdAt)*1000, Date.parse(weightDataToPlot[weightDataToPlot.length-1].createdAt)*1000])
+        // .range([padding + 5, rawSvg.attr("width") - padding]);
+
         yScale = d3.scale.linear()
-        .domain([0, d3.max(weightDataToPlot, function (d) {
+        .domain([d3.min(weightDataToPlot, function(d) {
+          return d.weight;
+        }), d3.max(weightDataToPlot, function (d) {
           return d.weight;
         })])
         .range([rawSvg.attr("height") - padding, 0]);
@@ -103,7 +76,8 @@ angular.module('grapph.chartApp', [])
         xAxisGen = d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
-        .ticks(weightDataToPlot.length - 1);
+        .ticks(3)
+        .tickFormat(timeFormat);
 
         yAxisGen = d3.svg.axis()
         .scale(yScale)
@@ -112,12 +86,12 @@ angular.module('grapph.chartApp', [])
 
         lineFun = d3.svg.line()
         .x(function (d) {
-          return xScale(Date.parse(d.createdAt));
+          return xScale(new Date(d.createdAt));
         })
         .y(function (d) {
           return yScale(d.weight);
-        })
-        .interpolate("basis");
+        });
+        //.interpolate("cardinal");
       }
 
       function drawLineChart() {
@@ -147,6 +121,7 @@ angular.module('grapph.chartApp', [])
 
       function redrawLineChart() {
         var weightDataToPlot = weightChartController.getWeightList();
+
         setChartParameters();
 
         svg.selectAll("g.y.axis").call(yAxisGen);

@@ -2,7 +2,7 @@ var angular = require('angular');
 
 angular.module('grapph.weight', [])
 .service('WeightListService', function($http) {
-  var weightList = ['150', '150.5', '150.7878'];
+  var weightList = [{"username":"foo", "weight":250, "createdAt":"2016-12-01T01:38:54.223Z"},{"username":"foo", "weight":253, "createdAt":"2016-12-01T01:38:57.501Z"},{"username":"foo", "weight":257, "createdAt":"2016-12-02T01:38:54.223Z"}]
 
   this.retrieveWeightList = function() {
     return $http.get('/weights/list')
