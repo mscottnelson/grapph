@@ -4,8 +4,10 @@ html
     include ./includes/googleMapsApi.jade
     script(src="/jspm_packages/system.js")
     script(src="/config.js")
+    script System.import('d3')
     script System.import('app-angular')
-    script System.import("/visualization/wGraph.js")
+    /*script System.import("/visualization/wGraph.js")*/
+    link(href='/visualization/chart.css', rel='stylesheet')
     style
       | body { padding-top: 70px; }
     block title
@@ -32,20 +34,25 @@ html
                 a(href='/users/logout') Logout
             p.navbar-text.navbar-right
               | Hello #{user.username}!
-    div(ng-controller="WeightListController as vm")
-      style.
-        #chart svg {
-        height: 400px;
-        }
-      #chart
-        svg
-      input(ng-model="newWeight" type="text")
-      button(ng-click="vm.addWeight(newWeight)") ADD
-      hr
-      label Basic Weight List for #{user.username}:
-      ul
-        li(ng-repeat="weight in vm.weightList | filter: { } track by $index")
-          | {{ weight.weight }} - {{ weight.createdAt | date:'shortDate' }}
+    //-
+    //-   style.
+    //-     #chart svg {
+    //-     height: 400px;
+    //-     }
+    //-   #chart
+    //-     svg
+    if isAuthenticated()
+      div(ng-controller="WeightChartController")
+        div(linear-chart chart-data="weightData")
+
+      div(ng-controller="WeightListController as vm")
+        input(ng-model="newWeight" type="text")
+        button(ng-click="vm.addWeight(newWeight)") ADD
+        hr
+        label Basic Weight List for #{user.username}:
+        ul
+          li(ng-repeat="weight in vm.weightList | filter: { } track by $index")
+            | {{ weight.weight }} - {{ weight.createdAt | date:'shortDate' }}
 
   block footer
         if user
