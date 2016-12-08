@@ -4,14 +4,20 @@ html
     include ./includes/googleMapsApi.jade
     script(src="/jspm_packages/system.js")
     script(src="/config.js")
+    script(src="/grapph/jquery.min.js")
+    script(src="/grapph/sly.min.js")
+    script(src="/grapph/horizontal.js")
+    script(src="/grapph/modernizr.js")
+    script(src="/grapph/plugins.js")
     script System.import('d3')
     script System.import('app-angular')
-    /*script System.import("/visualization/wGraph.js")*/
+    ///*script System.import("/visualization/wGraph.js")*/
     link(href='/visualization/chart.css', rel='stylesheet')
+    link(href='/grapph/horizontal.css', rel='stylesheet')
     style
       | body { padding-top: 70px; }
     block title
-      title Hello world!
+      title Grapph
 
     .container
       .well
@@ -34,19 +40,17 @@ html
                 a(href='/users/logout') Logout
             p.navbar-text.navbar-right
               | Hello #{user.username}!
-    //-
-    //-   style.
-    //-     #chart svg {
-    //-     height: 400px;
-    //-     }
-    //-   #chart
-    //-     svg
     if isAuthenticated()
       div(ng-controller="WeightChartController")
         div(linear-chart chart-data="weightData")
+      div
+        #forcecentered.frame
+          ul.clearfix
+            - for(var i = 120; i < 250; i++)
+              li #{i}
 
       div(ng-controller="WeightListController as vm")
-        input(ng-model="newWeight" type="text")
+        input(ng-model="newWeight" type="text" name="addValue")
         button(ng-click="vm.addWeight(newWeight)") ADD
         hr
         label Basic Weight List for #{user.username}:

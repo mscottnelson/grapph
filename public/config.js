@@ -15,6 +15,7 @@ System.config({
     "lodash": "npm:lodash@4.13.1",
     "moment": "npm:moment@2.17.1",
     "nvd3": "npm:nvd3@1.8.4",
+    "sly": "npm:sly@0.0.1",
     "github:angular/bower-angular-mocks@1.5.8": {
       "angular": "github:angular/bower-angular@1.5.8"
     },
@@ -158,6 +159,9 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "stream-browserify": "npm:stream-browserify@1.0.0",
       "string_decoder": "npm:string_decoder@0.10.31"
+    },
+    "npm:sly@0.0.1": {
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",

@@ -1,5 +1,4 @@
 var angular = require('angular');
-var moment = require('moment');
 
 angular.module('grapph.chartApp', ['grapph.weight'])
 .controller('WeightChartController', function(WeightListService, $scope) {
