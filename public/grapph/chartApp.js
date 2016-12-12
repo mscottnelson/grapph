@@ -29,7 +29,7 @@ angular.module('grapph.chartApp', ['grapph.weight'])
     restrict:'EA',
     controller: 'WeightChartController',
     controllerAs: 'weightChartController',
-    template:"<svg width='850' height='200'></svg>",
+    template:"<svg width='400' height='300'></svg>",
     link: function(scope, elem, attrs, weightChartController){
 
       var weightDataToPlot = weightChartController.getWeightList();

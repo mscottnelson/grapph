@@ -1,0 +1,165 @@
+/* legacy */
+body {
+  background: #ffffff;
+  padding-top:50px;
+}
+.container { margin: 0 auto; }
+
+/* Example wrapper */
+.wrap {
+	position: relative;
+	margin: 3em 0;
+}
+
+/* Frame */
+.frame {
+	height: 50px;
+	line-height: 50px;
+	overflow: hidden;
+}
+.frame ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-size: 22px;
+  font-weight:200;
+}
+.frame ul li {
+	float: left;
+	width: 75px;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: #0c9;
+	color: #eee;
+	text-align: center;
+	cursor: pointer;
+}
+.frame ul li.active {
+	color: #fff;
+	background: #1a8;
+}
+
+/* Scrollbar */
+.scrollbar {
+	margin: 0 0 1em 0;
+	height: 2px;
+	background: #ccc;
+	line-height: 0;
+}
+.scrollbar .handle {
+	width: 100px;
+	height: 100%;
+	background: #292a33;
+	cursor: pointer;
+}
+.scrollbar .handle .mousearea {
+	position: absolute;
+	top: -9px;
+	left: 0;
+	width: 100%;
+	height: 20px;
+}
+
+/* Pages */
+.pages {
+	list-style: none;
+	margin: 20px 0;
+	padding: 0;
+	text-align: center;
+}
+.pages li {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	margin: 0 4px;
+	text-indent: -999px;
+	border-radius: 10px;
+	cursor: pointer;
+	overflow: hidden;
+	background: #fff;
+	box-shadow: inset 0 0 0 1px rgba(0,0,0,.2);
+}
+.pages li:hover {
+	background: #aaa;
+}
+.pages li.active {
+	background: #666;
+}
+
+/* Controls */
+.controls { margin: 25px 0; text-align: center; }
+
+/* One Item Per Frame example*/
+.oneperframe { height: 300px; line-height: 300px; }
+.oneperframe ul li { width: 1140px; }
+.oneperframe ul li.active { background: #333; }
+
+/* Crazy example */
+.crazy ul li:nth-child(2n) { width: 100px; margin: 0 4px 0 20px; }
+.crazy ul li:nth-child(3n) { width: 300px; margin: 0 10px 0 5px; }
+.crazy ul li:nth-child(4n) { width: 400px; margin: 0 30px 0 2px; }
+
+
+/* main layout */
+#chart {
+  background-color:#f3f3f3
+}
+
+.manual-control {
+  padding-top:10px
+}
+.manual-control input {
+  width: 200px;
+  margin: 10px auto;
+  display: block;
+  font-size: 40px;
+  padding: 5px;
+  text-align: center;
+  color: #444;
+  font-weight: 300;
+  outline: none;
+  border:solid 0px;
+  background-color:#f7f7f7;
+}
+.manual-control input:focus {
+  border:solid 0px #aaa;
+}
+.manual-control button {
+  width: 200px;
+  margin: 10px auto;
+  display: block;
+  font-size: 27px;
+  padding: 10px 0px;
+  text-align: center;
+  color: #fff;
+  background-color:#1c9;
+  font-weight: 300;
+  border-radius:5px;
+  border:solid 0px;
+  font-weight:100;
+  letter-spacing:0.1em;
+}
+
+
+.item-list label {
+  text-align: center;
+  display: block;
+  font-size: 20px;
+  font-weight: 200;
+}
+.item-list ul {
+  text-align:center;
+  list-style:none;
+  padding-left:0;
+}
+
+
+/* overrides */
+.navbar-brand {
+  color:#666;
+  font-size: 27px;
+  letter-spacing: 0.05em;
+  font-weight: 200;
+}

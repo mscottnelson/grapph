@@ -13,15 +13,7 @@ html
     script System.import('app-angular')
     ///*script System.import("/visualization/wGraph.js")*/
     link(href='/visualization/chart.css', rel='stylesheet')
-    link(href='/grapph/horizontal.css', rel='stylesheet')
-    style
-      | body { padding-top: 70px; }
-    block title
-      title Grapph
-
-    .container
-      .well
-        block body
+    link(href='/style/main.css', rel='stylesheet')
   body
     nav.navbar.navbar-default.navbar-fixed-top
       .container
@@ -41,7 +33,7 @@ html
             p.navbar-text.navbar-right
               | Hello #{user.username}!
     if isAuthenticated()
-      div(ng-controller="WeightChartController")
+      div(ng-controller="WeightChartController")#chart
         div(linear-chart chart-data="weightData")
       div
         #forcecentered.frame
@@ -49,14 +41,15 @@ html
             - for(var i = 120; i < 250; i++)
               li #{i}
 
-      div(ng-controller="WeightListController as vm")
-        input(ng-model="newWeight" type="text" name="addValue")
-        button(ng-click="vm.addWeight(newWeight)") ADD
+      div(ng-controller="WeightListController as vm").manual-control
+        input(ng-model="newWeight" type="text" name="addValue" value="100")
+        button(ng-click="vm.addWeight(newWeight)") Add
         hr
-        label Basic Weight List for #{user.username}:
-        ul
-          li(ng-repeat="weight in vm.weightList | filter: { } track by $index")
-            | {{ weight.weight }} - {{ weight.createdAt | date:'shortDate' }}
+        div.item-list
+          label Weight List for #{user.username}:
+          ul
+            li(ng-repeat="weight in vm.weightList | filter: { } track by $index")
+              | {{ weight.weight }} - {{ weight.createdAt | date:'shortDate' }}
 
   block footer
         if user
