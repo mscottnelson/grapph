@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "mscottnelson",
-    "password": null,
+    "username": "postgres",
+    "password": "Silverandgold",
     "database": "grapph_development",
     "host": "127.0.0.1",
     "dialect": "postgres"

@@ -29,17 +29,32 @@ angular.module('grapph.chartApp', ['grapph.weight'])
     restrict:'EA',
     controller: 'WeightChartController',
     controllerAs: 'weightChartController',
-    template:"<svg width='400' height='300'></svg>",
+    template:"<svg width='100%' height='300px'></svg>",
     link: function(scope, elem, attrs, weightChartController){
+
+  //    var svg = d3.select('.chart-container').append("svg")
 
       var weightDataToPlot = weightChartController.getWeightList();
       var padding = 20;
       var pathClass="path";
       var xScale, yScale, xAxisGen, yAxisGen, lineFun;
 
+
       var d3 = $window.d3;
       var rawSvg=elem.find('svg');
-      var svg = d3.select(rawSvg[0]);
+      var svg = d3.select(rawSvg[0])
+
+      var $container = rawSvg,
+        width = $container.width(),
+        height = $container.height()
+
+      rawSvg.attr("width", '100%')
+      .attr("height", '300px')
+      .attr('viewBox','0 0 '+Math.min(width,height)+' '+Math.min(width,height))
+      .attr('preserveAspectRatio','xMinYMin')
+      .append("g")
+      .attr("transform", "translate(" + Math.min(width,height) / 2 + "," + Math.min(width,height) / 2 + ")");
+
 
       scope.$watch(function() {
         return weightChartController.getWeightList();
@@ -58,7 +73,7 @@ angular.module('grapph.chartApp', ['grapph.weight'])
 
         xScale = d3.time.scale()
         .domain([new Date(weightDataToPlot[0].createdAt), new Date(weightDataToPlot[weightDataToPlot.length-1].createdAt)])
-        .range([padding + 5, rawSvg.attr("width") - padding]);
+        .range([padding + 5, width - padding]);
 
         // xScale = d3.scale.linear()
         // .domain([Date.parse(weightDataToPlot[0].createdAt)*1000, Date.parse(weightDataToPlot[weightDataToPlot.length-1].createdAt)*1000])
@@ -70,7 +85,7 @@ angular.module('grapph.chartApp', ['grapph.weight'])
         }), d3.max(weightDataToPlot, function (d) {
           return d.weight;
         })])
-        .range([rawSvg.attr("height") - padding, 0]);
+        .range([height - padding, 0]);
 
         xAxisGen = d3.svg.axis()
         .scale(xScale)
@@ -91,6 +106,16 @@ angular.module('grapph.chartApp', ['grapph.weight'])
           return yScale(d.weight);
         });
         //.interpolate("cardinal");
+
+        areaFun = d3.svg.area()
+        .x(function (d) {
+          return xScale(new Date(d.createdAt));
+        })
+        .y0(height-20)
+        .y1(function (d) {
+          return yScale(d.weight);
+        });
+
       }
 
       function drawLineChart() {
@@ -98,24 +123,35 @@ angular.module('grapph.chartApp', ['grapph.weight'])
 
         setChartParameters();
 
+        svg.append("svg:path")
+        .attr("d", lineFun(weightDataToPlot))
+        .attr("class", pathClass)
+
+        svg.append("svg:path")
+        .datum(weightDataToPlot)
+        .attr("class", "area")
+        .attr("d", areaFun);
+
+      	svg.selectAll('circle')
+      	.data(weightDataToPlot)
+      	.enter().append('circle')
+      	  .attr('cx', function (d) { return xScale(new Date(d.createdAt)); })
+      	  .attr('cy', function (d) { return yScale(d.weight); })
+      	  .attr('r', 5)
+          .attr("class","node")
+
+        // axes
+
         svg.append("svg:g")
         .attr("class", "x axis")
-        .attr("transform", "translate(0,180)")
+        .attr("transform", "translate(0,280)")
         .call(xAxisGen);
 
         svg.append("svg:g")
         .attr("class", "y axis")
-        .attr("transform", "translate(20,0)")
+        .attr("transform", "translate("+(width)+",0)")
         .call(yAxisGen);
 
-        svg.append("svg:path")
-        .attr({
-          d: lineFun(weightDataToPlot),
-          "stroke": "blue",
-          "stroke-width": 2,
-          "fill": "none",
-          "class": pathClass
-        });
       }
 
       function redrawLineChart() {
@@ -127,10 +163,10 @@ angular.module('grapph.chartApp', ['grapph.weight'])
 
         svg.selectAll("g.x.axis").call(xAxisGen);
 
-        svg.selectAll("."+pathClass)
+    /*    svg.selectAll("."+pathClass)
         .attr({
           d: lineFun(weightDataToPlot)
-        });
+        }); */
       }
 
       drawLineChart();
