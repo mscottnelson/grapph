@@ -1,18 +1,28 @@
-path {
-  stroke: steelblue;
-  fill: none;
+.path {
+  stroke: #2acc99;
+  stroke-width:4;
+}
+
+.area {
+  stroke-width:10;
+  fill:#e3f3ee;
+}
+
+.node {
+  fill: #2acc99;
 }
 
 .axis path,
 .axis line{
   fill: none;
-  stroke:black;
+  stroke:#bbb;
   shape-rendering:crispEdges;
+  display:none;
 }
 
 .axis text{
-  font-family: sans-serif;
-  font-size: 10px;
+  font-size:12px;
+  fill:#bbb
 }
 
 .tick

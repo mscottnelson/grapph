@@ -1,4 +1,8 @@
-body { background: #e8e8e8; }
+/* legacy */
+body {
+  background: #ffffff;
+  padding-top:50px;
+}
 .container { margin: 0 auto; }
 
 /* Example wrapper */
@@ -18,22 +22,23 @@ body { background: #e8e8e8; }
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	font-size: 25px;
+	font-size: 22px;
+  font-weight:200;
 }
 .frame ul li {
 	float: left;
-	width: 150px;
+	width: 75px;
 	height: 100%;
-	margin: 0 1px 0 0;
+	margin: 0;
 	padding: 0;
-	background: #333;
-	color: #ddd;
+	background: #0c9;
+	color: #eee;
 	text-align: center;
 	cursor: pointer;
 }
 .frame ul li.active {
 	color: #fff;
-	background: #a03232;
+	background: #1a8;
 }
 
 /* Scrollbar */
@@ -95,3 +100,66 @@ body { background: #e8e8e8; }
 .crazy ul li:nth-child(2n) { width: 100px; margin: 0 4px 0 20px; }
 .crazy ul li:nth-child(3n) { width: 300px; margin: 0 10px 0 5px; }
 .crazy ul li:nth-child(4n) { width: 400px; margin: 0 30px 0 2px; }
+
+
+/* main layout */
+#chart {
+  background-color:#f3f3f3
+}
+
+.manual-control {
+  padding-top:10px
+}
+.manual-control input {
+  width: 200px;
+  margin: 10px auto;
+  display: block;
+  font-size: 40px;
+  padding: 5px;
+  text-align: center;
+  color: #444;
+  font-weight: 300;
+  outline: none;
+  border:solid 0px;
+  background-color:#f7f7f7;
+}
+.manual-control input:focus {
+  border:solid 0px #aaa;
+}
+.manual-control button {
+  width: 200px;
+  margin: 10px auto;
+  display: block;
+  font-size: 27px;
+  padding: 10px 0px;
+  text-align: center;
+  color: #fff;
+  background-color:#1c9;
+  font-weight: 300;
+  border-radius:5px;
+  border:solid 0px;
+  font-weight:100;
+  letter-spacing:0.1em;
+}
+
+
+.item-list label {
+  text-align: center;
+  display: block;
+  font-size: 20px;
+  font-weight: 200;
+}
+.item-list ul {
+  text-align:center;
+  list-style:none;
+  padding-left:0;
+}
+
+
+/* overrides */
+.navbar-brand {
+  color:#666;
+  font-size: 27px;
+  letter-spacing: 0.05em;
+  font-weight: 200;
+}
