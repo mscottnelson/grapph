@@ -32,6 +32,9 @@ html
                 a(href='/users/logout') Logout
             p.navbar-text.navbar-right
               | Hello #{user.username}!
+    .container
+      .well
+        block body
     if isAuthenticated()
       div(ng-controller="WeightChartController")#chart
         div(linear-chart chart-data="weightData")
