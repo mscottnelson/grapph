@@ -1,6 +1,7 @@
 .path {
   stroke: #2acc99;
   stroke-width:4;
+  fill:none;
 }
 
 .area {
