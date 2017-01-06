@@ -1,13 +1,13 @@
 {
   "development": {
-    "username": "mscottnelson",
+    "username": "postgres",
     "password": null,
     "database": "grapph_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "username": "mscottnelson",
+    "username": "postgres",
     "password": null,
     "database": "grapph_test",
     "host": "127.0.0.1",
