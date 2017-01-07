@@ -11,6 +11,7 @@
     "dev_db_connect": "psql grapph_development",
     "test_db_create": "createdb graphh_test",
     "sequelize": "sequelize",
+    "postinstall": "jspm install",
     "karma": "karma start",
     "mocha": "istanbul cover -x '**/models/index.js' _mocha -- -R spec test/server/*-test.js",
     "webdriver": "webdriver-manager update && webdriver-manager start",
