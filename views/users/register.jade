@@ -18,6 +18,3 @@ block body
         label(for="password_confirm") Confirm Password
         input.form-control(type="password" name="password_confirm" ng-model="user.password_confirm" registration-password-match="password")
         button.btn.btn-default(type="submit" ng-disabled="registration.$invalid") Register!
-
-    pre user = {{ user | json }}
-    pre registration = {{ registration | json }}
