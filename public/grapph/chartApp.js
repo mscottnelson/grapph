@@ -152,6 +152,8 @@ angular.module('grapph.chartApp', ['grapph.weight'])
         .attr("transform", "translate("+(width)+",0)")
         .call(yAxisGen);
 
+
+
       }
 
       function redrawLineChart() {
@@ -163,10 +165,26 @@ angular.module('grapph.chartApp', ['grapph.weight'])
 
         svg.selectAll("g.x.axis").call(xAxisGen);
 
-    /*    svg.selectAll("."+pathClass)
+        svg.selectAll("."+pathClass)
         .attr({
           d: lineFun(weightDataToPlot)
-        }); */
+        });
+
+        svg.selectAll(".area")
+        .attr({
+          d: areaFun(weightDataToPlot)
+        });
+
+        svg.selectAll(".node").remove()
+
+        svg.selectAll('circle')
+      	.data(weightDataToPlot)
+      	.enter().append('circle')
+      	  .attr('cx', function (d) { return xScale(new Date(d.createdAt)); })
+      	  .attr('cy', function (d) { return yScale(d.weight); })
+      	  .attr('r', 5)
+          .attr("class","node")
+
       }
 
       drawLineChart();
