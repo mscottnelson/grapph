@@ -32,6 +32,7 @@ html
             p.navbar-text.navbar-right
               | Hello #{user.username}!
     .container
+    if !isAuthenticated()
       .well
         block body
     if isAuthenticated()
@@ -52,6 +53,7 @@ html
           ul
             li(ng-repeat="weight in vm.weightList | filter: { } track by $index")
               | {{ weight.weight }} - {{ weight.createdAt | date:'shortDate' }}
+              span.remove-item(ng-click="vm.deleteWeight(weight)") x
 
   block footer
         if user
