@@ -1,1 +1,0 @@
-module.exports = require("npm:domhandler@2.3.0/index.js");

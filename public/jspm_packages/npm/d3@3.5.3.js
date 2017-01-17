@@ -1,1 +1,0 @@
-module.exports = require("npm:d3@3.5.3/d3.js");

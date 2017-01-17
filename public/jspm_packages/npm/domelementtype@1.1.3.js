@@ -1,1 +1,0 @@
-module.exports = require("npm:domelementtype@1.1.3/index.js");
