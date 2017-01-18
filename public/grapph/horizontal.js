@@ -22,8 +22,8 @@ jQuery(function($){
 	},{
 		active: [
 				function (e,f) {
-					$(".manual-control").find("input").val(f+120)
-					$(".manual-control").find("input").attr("value",f+120)
+					$(".manual-control").find("input").val(f+120);
+					$(".manual-control").find("input").attr("value",f+120).trigger('input');
 				}
 		]
 	}).init();
