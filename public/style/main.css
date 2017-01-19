@@ -140,6 +140,7 @@ body {
   border:solid 0px;
   font-weight:100;
   letter-spacing:0.1em;
+  outline:none;
 }
 
 
@@ -153,6 +154,32 @@ body {
   text-align:center;
   list-style:none;
   padding-left:0;
+  width:200px;
+  margin:0 auto;
+  display:block;
+  cursor:normal;
+}
+.item-list ul li {
+  padding:5px 30px;
+  border-radius:5px;
+  position:relative
+}
+.item-list ul li:hover {
+  background-color:#ddd;
+}
+.item-list ul li span {
+  position:absolute;
+  display:none;
+  cursor:pointer;
+  font-size:11px;
+  padding:8px 8px 7px;
+  background-color:#eee;
+  top:0px;
+  right:0px;
+  border-radius:0px 5px 5px 0px;
+}
+.item-list ul li:hover span {
+  display:block;
 }
 
 
