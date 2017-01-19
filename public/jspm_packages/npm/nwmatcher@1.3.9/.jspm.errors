@@ -1,0 +1,23 @@
+MultipleErrors: /Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:152:6: Unexpected token ;
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:154:3: Unexpected reserved word if
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:155:21: Unexpected token (
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:155:22: Unexpected token 'DOMNodeInserted'
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:155:39: Unexpected token ,
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:155:41: Semi-colon expected
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:155:49: Unexpected token (
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:155:50: Unexpected token e
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:155:102: Unexpected token )
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:156:117: Semi-colon expected
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:156:117: Unexpected token )
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:156:119: Semi-colon expected
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:171:3: Unexpected token isEnabled
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:155:8: Unexpected token (
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:155:9: Invalid left-hand side expression in assignment
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:155:104: Unexpected token &&
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:156:119: Semi-colon expected
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:171:63: Unexpected token ;
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:176:32: Unexpected token ;
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:179:32: Unexpected token ;
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:182:32: Unexpected token ;
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:185:26: Unexpected token ;
+/Users/mscottdev/.jspm/packages/npm/nwmatcher@1.3.9/src/modules/nwmatcher-cache.js:187:1: Unexpected token }
