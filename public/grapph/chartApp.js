@@ -82,7 +82,7 @@ angular.module('grapph.chartApp', ['grapph.weight'])
         yScale = d3.scale.linear()
         .domain([0, d3.max(weightDataToPlot, function (d) {
           return d.weight;
-        })+2])
+        })+20])
         .range([height - padding, 0]);
 
         xAxisGen = d3.svg.axis()
