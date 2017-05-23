@@ -53,7 +53,7 @@ angular.module('grapph.chartApp', ['grapph.weight'])
       .attr('viewBox','0 0 '+Math.min(width,height)+' '+Math.min(width,height))
       .attr('preserveAspectRatio','xMinYMin')
       .append("g")
-      .attr("transform", "translate(" + Math.min(width,height) / 2 + "," + Math.min(width,height) / 2 + ")");
+      //.attr("transform", "translate(" + Math.min(width,height) / 2 + "," + Math.min(width,height) / 2 + ")");
 
 
       scope.$watch(function() {
@@ -80,11 +80,9 @@ angular.module('grapph.chartApp', ['grapph.weight'])
         // .range([padding + 5, rawSvg.attr("width") - padding]);
 
         yScale = d3.scale.linear()
-        .domain([d3.min(weightDataToPlot, function(d) {
+        .domain([0, d3.max(weightDataToPlot, function (d) {
           return d.weight;
-        }), d3.max(weightDataToPlot, function (d) {
-          return d.weight;
-        })])
+        })+2])
         .range([height - padding, 0]);
 
         xAxisGen = d3.svg.axis()
